@@ -36,6 +36,9 @@ public:
 
     friend std::ostream & operator<<(std::ostream &, const Cyclic_list &);
     friend Cyclic_list operator+(const Cyclic_list &, const Cyclic_list &);
+    friend Cyclic_list operator-(const Cyclic_list &, const Cyclic_list &);
+    friend Cyclic_list & operator-=(Cyclic_list &, const Cyclic_list &);
+    friend Cyclic_list & operator-=(Cyclic_list &, const int);
     friend Cyclic_list & operator+=(Cyclic_list &, const Cyclic_list &);
     friend Cyclic_list & operator+=(Cyclic_list &, const int);
     friend bool operator==(const Cyclic_list &, const Cyclic_list &);
