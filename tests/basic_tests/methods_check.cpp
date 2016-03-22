@@ -188,11 +188,25 @@ TEST_F(ListFixture, adding_lists_check) {
 }
 
 TEST_F(ListFixture, comparing_lists_check) {
-    int arr[] = {1, 2, 3, 4,};
+    int arr[] = {1, 2, 3, 4};
     for(auto const item : arr)
         list->push(item);
     Cyclic_list sList = {1, 2, 3, 4, 5};
     EXPECT_EQ(false, *list == sList);
     sList.remove(5);
     EXPECT_EQ(true, *list == sList);
+    sList = {1, 2, 3, 8};
+    EXPECT_EQ(false, *list == sList);
 }
+
+TEST_F(ListFixture, copying_obj_check) {
+    int arr[] = {1, 2, 3, 4};
+    for(auto const item : arr)
+        list->push(item);
+    Cyclic_list copy(*list);
+    EXPECT_EQ(4, list->getLength());
+    EXPECT_EQ(4, copy.getLength());
+    EXPECT_EQ(true, *list == copy);
+}
+
+
