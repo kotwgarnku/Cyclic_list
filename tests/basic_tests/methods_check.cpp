@@ -186,3 +186,13 @@ TEST_F(ListFixture, adding_lists_check) {
     EXPECT_EQ(5, sum[6]);
     EXPECT_EQ(8, sum[9]);
 }
+
+TEST_F(ListFixture, comparing_lists_check) {
+    int arr[] = {1, 2, 3, 4,};
+    for(auto const item : arr)
+        list->push(item);
+    Cyclic_list sList = {1, 2, 3, 4, 5};
+    EXPECT_EQ(false, *list == sList);
+    sList.remove(5);
+    EXPECT_EQ(true, *list == sList);
+}

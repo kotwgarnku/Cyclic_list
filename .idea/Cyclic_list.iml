@@ -7,7 +7,6 @@
       <sourceFolder url="file://$MODULE_DIR$/tests/lib/gtest-1.7.0/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tests/lib/gtest-1.7.0/cmake/internal_utils.cmake" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tests/basic_tests/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/tests/basic_tests/basic_check.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tests/basic_tests/methods_check.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tests/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />

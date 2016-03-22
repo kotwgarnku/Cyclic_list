@@ -23,7 +23,8 @@ int main() {
     std::cout << myList << std::endl;
     std::cout << *otherList << std::endl;
     std::cout << otherList->getLength() << std::endl;
-    test = *otherList + myList;
+    test = myList + *otherList;
+    test.uniquify();
     std::cout << test << std::endl;
 
     return 0;
