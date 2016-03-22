@@ -5,7 +5,7 @@
 #include "src/Cyclic_list.h"
 
 int main() {
-    Cyclic_list myList, *otherList;
+    Cyclic_list myList, test, *otherList;
 
     otherList = new Cyclic_list();
     otherList->push(2);
@@ -22,5 +22,9 @@ int main() {
 
     std::cout << myList << std::endl;
     std::cout << *otherList << std::endl;
+    std::cout << otherList->getLength() << std::endl;
+    test = *otherList + myList;
+    std::cout << test << std::endl;
+
     return 0;
 }

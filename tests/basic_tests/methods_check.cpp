@@ -179,5 +179,10 @@ TEST_F(ListFixture, adding_lists_check) {
     Cyclic_list sList = {5, 6, 7, 8};
     Cyclic_list sum;
     EXPECT_EQ(4, sList.getLength());
-    sum = (*list) + sList; //CRASH
+    sum = (*list) + sList;
+    EXPECT_EQ(10, sum.getLength());
+    EXPECT_EQ(1, sum[0]);
+    EXPECT_EQ(2, sum[1]);
+    EXPECT_EQ(5, sum[6]);
+    EXPECT_EQ(8, sum[9]);
 }
