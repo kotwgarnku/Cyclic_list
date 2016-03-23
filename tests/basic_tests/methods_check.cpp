@@ -31,6 +31,10 @@ TEST_F(ListFixture, push_check) {
     EXPECT_EQ(3, list->get(0));
     EXPECT_EQ(2, list->get(1));
     EXPECT_EQ(1, list->get(2));
+    *list += 5;
+    *list += 7;
+    EXPECT_EQ(5, list->get(3));
+    EXPECT_EQ(7, list->get(4));
 }
 
 TEST_F(ListFixture, push_2arg_check) {
@@ -97,6 +101,8 @@ TEST_F(ListFixture, remove_check) {
     EXPECT_EQ(6, list->getLength());
     list->remove(2);
     EXPECT_EQ(5, list->getLength());
+    *list -= 4;
+    EXPECT_EQ(3, list->getLength());
 }
 
 TEST_F(ListFixture, removeRange_check) {
@@ -204,11 +210,11 @@ TEST_F(ListFixture, comparing_lists_check) {
     for(auto const item : arr)
         list->push(item);
     Cyclic_list sList = {1, 2, 3, 4, 5};
-    EXPECT_EQ(false, *list == sList);
+    EXPECT_EQ(0, *list == sList);
     sList.remove(5);
-    EXPECT_EQ(true, *list == sList);
+    EXPECT_EQ(1, *list == sList);
     sList = {1, 2, 3, 8};
-    EXPECT_EQ(false, *list == sList);
+    EXPECT_EQ(0, *list == sList);
 }
 
 TEST_F(ListFixture, copying_obj_check) {
@@ -218,7 +224,7 @@ TEST_F(ListFixture, copying_obj_check) {
     Cyclic_list copy(*list);
     EXPECT_EQ(4, list->getLength());
     EXPECT_EQ(4, copy.getLength());
-    EXPECT_EQ(true, *list == copy);
+    EXPECT_EQ(1, *list == copy);
 }
 
 
