@@ -20,11 +20,13 @@ int main() {
     myList.push(-1, 6);
     myList.pushAfter(99, 12);
 
+//    std::cout << myList << std::endl;
+//    std::cout << *otherList << std::endl;
+//    std::cout << otherList->getLength() << std::endl;
+    Cyclic_list test = {5, 3, 12 , 1};
     std::cout << myList << std::endl;
-    std::cout << *otherList << std::endl;
-    std::cout << otherList->getLength() << std::endl;
-    Cyclic_list test(myList);
     std::cout << test << std::endl;
-
+    myList -= test;
+    std::cout << "Diff: " << myList << std::endl;
     return 0;
 }

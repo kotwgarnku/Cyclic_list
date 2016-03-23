@@ -240,6 +240,34 @@ Cyclic_list & operator+=(Cyclic_list &l, const int value) {
     return l;
 }
 
+Cyclic_list operator-(const Cyclic_list &l, const Cyclic_list &r) {
+    Cyclic_list diff;
+    Cyclic_list::Node *it;
+
+    it = l.last->next;
+    for(int i = 0; i < l.length; ++i) {
+        diff.push(it->value);
+        it = it->next;
+    }
+
+    it = r.last->next;
+    for(int i = 0; i < r.length; ++i) {
+        diff.remove(it->value);
+        it = it->next;
+    }
+
+    return diff;
+}
+
+Cyclic_list & operator-=(Cyclic_list &l, const Cyclic_list &r) {
+    return (l = l - r);
+}
+
+Cyclic_list & operator-=(Cyclic_list &l, const int value) {
+    l.remove(value);
+    return l;
+}
+
 int Cyclic_list::operator[](unsigned index) {
     Node *it = last->next;
     unsigned inx = 0;

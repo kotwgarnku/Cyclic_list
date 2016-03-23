@@ -187,6 +187,18 @@ TEST_F(ListFixture, adding_lists_check) {
     EXPECT_EQ(8, sum[9]);
 }
 
+TEST_F(ListFixture, subtracting_lists_check) {
+    int arr[] = {1, 2, 3, 10, 2, 4, 4, 7, 8};
+    for(auto const item : arr)
+        list->push(item);
+    Cyclic_list minus = {2, 4, 7, 8};
+    Cyclic_list diff = (*list) - minus;
+    EXPECT_EQ(3, diff.getLength());
+    EXPECT_EQ(1, diff[0]);
+    EXPECT_EQ(3, diff[1]);
+    EXPECT_EQ(10, diff[2]);
+}
+
 TEST_F(ListFixture, comparing_lists_check) {
     int arr[] = {1, 2, 3, 4};
     for(auto const item : arr)
