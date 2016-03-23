@@ -1,6 +1,7 @@
 /**
 * @author Filip Konieczny
 */
+#include <stdexcept>
 #include "Cyclic_list.h"
 
 //add item on the end of the list
