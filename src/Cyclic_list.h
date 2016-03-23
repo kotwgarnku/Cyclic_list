@@ -5,7 +5,6 @@
 
 #ifndef CYCLIC_LIST_H
     #define CYCLIC_LIST_H
-#endif
 
 class Cyclic_list {
 
@@ -56,3 +55,5 @@ private:
     Node *last;
     unsigned length; //list length
 };
+
+#endif
