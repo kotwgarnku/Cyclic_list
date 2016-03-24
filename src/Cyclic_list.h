@@ -34,15 +34,15 @@ public:
     void uniquify();
 
     friend std::ostream & operator<<(std::ostream &, const Cyclic_list &);
-    friend Cyclic_list operator+(const Cyclic_list &, const Cyclic_list &);
-    friend Cyclic_list operator-(const Cyclic_list &, const Cyclic_list &);
-    friend Cyclic_list & operator-=(Cyclic_list &, const Cyclic_list &);
-    friend Cyclic_list & operator-=(Cyclic_list &, const int);
-    friend Cyclic_list & operator+=(Cyclic_list &, const Cyclic_list &);
-    friend Cyclic_list & operator+=(Cyclic_list &, const int);
-    friend bool operator==(const Cyclic_list &, const Cyclic_list &);
-    friend bool operator!=(const Cyclic_list &, const Cyclic_list &);
-    int operator[](unsigned);
+    Cyclic_list operator+(const Cyclic_list &);
+    Cyclic_list operator-(const Cyclic_list &);
+    Cyclic_list & operator-=(const Cyclic_list &);
+    Cyclic_list & operator-=(const int);
+    Cyclic_list & operator+=(const Cyclic_list &);
+    Cyclic_list & operator+=(const int);
+    bool operator==(const Cyclic_list &);
+    bool operator!=(const Cyclic_list &);
+    int operator[](unsigned) const;
     Cyclic_list & operator=(const Cyclic_list &);
 
     Cyclic_list(): length(0), last() {};

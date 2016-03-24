@@ -20,6 +20,8 @@ int main() {
     myList.push(-1, 6);
     myList.pushAfter(99, 12);
 
+    myList += *otherList;
+    myList = myList;
 //    std::cout << myList << std::endl;
 //    std::cout << *otherList << std::endl;
 //    std::cout << otherList->getLength() << std::endl;

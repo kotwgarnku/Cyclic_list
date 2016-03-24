@@ -213,63 +213,49 @@ std::ostream & operator<<(std::ostream &os, const Cyclic_list &list) {
     return os;
 }
 
-Cyclic_list operator+(const Cyclic_list &l, const Cyclic_list &r) {
+Cyclic_list Cyclic_list::operator+(const Cyclic_list &r) {
     Cyclic_list sum;
-    Cyclic_list::Node *it;
 
-    it = l.last->next;
-    for(int i = 0; i < l.length; ++i) {
-        sum.push(it->value);
-        it = it->next;
-    }
+    for(int i = 0; i < this->getLength(); ++i)
+        sum.push(operator[](i));
 
-    it = r.last->next;
-    for(int i = 0; i < r.length; ++i) {
-        sum.push(it->value);
-        it = it->next;
-    }
+    for(int i = 0; i < r.getLength(); ++i)
+        sum.push(r[i]);
 
     return sum;
 }
 
-Cyclic_list & operator+=(Cyclic_list &l, const Cyclic_list &r) {
-    return (l = l + r);
+Cyclic_list & Cyclic_list::operator+=(const Cyclic_list &r) {
+    return (*this = *this + r);
 }
 
-Cyclic_list & operator+=(Cyclic_list &l, const int value) {
-    l.push(value);
-    return l;
+Cyclic_list & Cyclic_list::operator+=(const int value) {
+    push(value);
+    return *this;
 }
 
-Cyclic_list operator-(const Cyclic_list &l, const Cyclic_list &r) {
+Cyclic_list Cyclic_list::operator-(const Cyclic_list &r) {
     Cyclic_list diff;
-    Cyclic_list::Node *it;
 
-    it = l.last->next;
-    for(int i = 0; i < l.length; ++i) {
-        diff.push(it->value);
-        it = it->next;
-    }
+    for(int i = 0; i < this->getLength(); ++i)
+        diff.push(operator[](i));
 
-    it = r.last->next;
-    for(int i = 0; i < r.length; ++i) {
-        diff.remove(it->value);
-        it = it->next;
-    }
+    for(int i = 0; i < r.length; ++i)
+        diff.remove(r[i]);
 
     return diff;
 }
 
-Cyclic_list & operator-=(Cyclic_list &l, const Cyclic_list &r) {
-    return (l = l - r);
+Cyclic_list & Cyclic_list::operator-=(const Cyclic_list &r) {
+    return (*this = *this - r);
 }
 
-Cyclic_list & operator-=(Cyclic_list &l, const int value) {
-    l.remove(value);
-    return l;
+Cyclic_list & Cyclic_list::operator-=(const int value) {
+    remove(value);
+    return *this;
 }
 
-int Cyclic_list::operator[](unsigned index) {
+int Cyclic_list::operator[](unsigned index) const {
     Node *it = last->next;
     unsigned inx = 0;
 
@@ -283,28 +269,22 @@ int Cyclic_list::operator[](unsigned index) {
     }
 }
 
-bool operator==(const Cyclic_list &l, const Cyclic_list &r) {
+bool Cyclic_list::operator==(const Cyclic_list &r) {
     Cyclic_list::Node *lit, *rit;
     unsigned inx;
 
-    if(l.length != r.length)
+    if(length != r.getLength())
         return false;
 
-    lit = l.last->next;
-    rit = r.last->next;
-    for(inx = 0; inx < l.length; inx++) {
-        if(lit->value != rit->value)
+    for(inx = 0; inx < length; ++inx)
+        if(operator[](inx) != r[inx])
             return false;
-
-        lit = lit->next;
-        rit = rit->next;
-    }
 
     return true;
 }
 
-bool operator!=(const Cyclic_list &l, const Cyclic_list &r) {
-    return !operator==(l, r);
+bool Cyclic_list::operator!=(const Cyclic_list &r) {
+    return !operator==(r);
 }
 
 Cyclic_list::Cyclic_list(const Cyclic_list &source) : Cyclic_list() {
@@ -319,12 +299,14 @@ Cyclic_list::Cyclic_list(const Cyclic_list &source) : Cyclic_list() {
 Cyclic_list& Cyclic_list::operator=(const Cyclic_list &list) {
     Node *it;
 
-    empty();
+    if(*this != list) {
+        empty();
 
-    it = list.last->next;
-    for(int i = 0; i < list.length; ++i) {
-        this->push(it->value);
-        it = it->next;
+        it = list.last->next;
+        for(int i = 0; i < list.length; ++i) {
+            this->push(it->value);
+            it = it->next;
+        }
     }
 
     return *this;
